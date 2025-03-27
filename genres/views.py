@@ -1,7 +1,9 @@
-import json
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import get_object_or_404
+"""Views for the Actor app."""
+
+#import json
+#from django.http import JsonResponse
+#rom django.views.decorators.csrf import csrf_exempt
+#from django.shortcuts import get_object_or_404
 from genres.models import Genre
 from rest_framework import generics
 from genres.serializers import GenreSerializer
@@ -41,14 +43,14 @@ from genres.serializers import GenreSerializer
 #         return JsonResponse({'message': 'Genre deleted successfully'}, status=204)
 
 class GenreCreateListView(generics.ListCreateAPIView):
-
+    """Handles creating and listing genres."""
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-
+    """Handles retrieving, updating, and deleting genres."""
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 

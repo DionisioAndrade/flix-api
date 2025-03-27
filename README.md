@@ -9,6 +9,8 @@ A **API-Flix** é uma API RESTful desenvolvida para gerenciar um catálogo de fi
 - Cadastro de autores (diretores, roteiristas, etc.)
 - Manipulação de dados de filmes (criação, leitura, atualização, exclusão)
 - Relacionamento entre filmes, gêneros e autores
+-Avaliação de Filmes
+
 
 ## Tecnologias Utilizadas
 
