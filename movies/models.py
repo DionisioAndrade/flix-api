@@ -1,7 +1,7 @@
 from django.db import models
 from genres.models import Genre
 from actors.models import Actor
-# Create your models here.
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=500)
