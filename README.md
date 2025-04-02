@@ -27,3 +27,19 @@ Clone este repositório para o seu ambiente local:
 
 ```bash
 git clone https://github.com/DionisioAndrade/api-flix.git
+```
+
+### 2. Instalando dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+## Links úteis
+
+* https://docs.djangoproject.com
+* https://www.django-rest-framework.org/
+* https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#
+
+
+

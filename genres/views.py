@@ -6,6 +6,7 @@
 #from django.shortcuts import get_object_or_404
 from genres.models import Genre
 from rest_framework import generics
+from rest_framework.authentication import isAuthenticated
 from genres.serializers import GenreSerializer
 
 # CRUD WITH FUNCTION BASED VIEWS
@@ -44,6 +45,7 @@ from genres.serializers import GenreSerializer
 
 class GenreCreateListView(generics.ListCreateAPIView):
     """Handles creating and listing genres."""
+    authentication_classes = (isAuthenticated,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
@@ -51,6 +53,7 @@ class GenreCreateListView(generics.ListCreateAPIView):
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     """Handles retrieving, updating, and deleting genres."""
+    authentication_classes = (isAuthenticated,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
