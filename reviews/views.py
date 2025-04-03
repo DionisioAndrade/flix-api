@@ -1,18 +1,18 @@
 """Views for the Review app."""
 
 from rest_framework import generics
-from rest_framework.authentication import isAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from reviews.models import Review
 from reviews.serializers import ReviewSerializer
 
 class ReviewListCreateView(generics.ListCreateAPIView):
     """Handles creating and listing Review."""
-    authentication_classes = (isAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     
 class ReviewRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     """Handles retrieving, updating, and deleting Review."""
-    authentication_classes = (isAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
