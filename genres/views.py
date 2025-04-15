@@ -8,6 +8,7 @@ from genres.models import Genre
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from genres.serializers import GenreSerializer
+from genres.permissions import GenrePermissionClass
 
 # CRUD WITH FUNCTION BASED VIEWS
 # @csrf_exempt
@@ -44,16 +45,22 @@ from genres.serializers import GenreSerializer
 #         return JsonResponse({'message': 'Genre deleted successfully'}, status=204)
 
 class GenreCreateListView(generics.ListCreateAPIView):
-    """Handles creating and listing genres."""
-    permission_classes = (IsAuthenticated,)
+    """
+    Handles creating and listing genres.
+    """
+    
+    permission_classes = (IsAuthenticated, GenrePermissionClass,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    """Handles retrieving, updating, and deleting genres."""
-    permission_classes = (IsAuthenticated,)
+    """
+    Handles retrieving, updating, and deleting genres.
+    """
+    
+    permission_classes = (IsAuthenticated,GenrePermissionClass,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
