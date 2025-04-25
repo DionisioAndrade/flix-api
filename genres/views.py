@@ -8,7 +8,7 @@ from genres.models import Genre
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from genres.serializers import GenreSerializer
-from genres.permissions import GenrePermissionClass
+from app.permissions import GlobalDefaultPermission
 
 # CRUD WITH FUNCTION BASED VIEWS
 # @csrf_exempt
@@ -49,7 +49,7 @@ class GenreCreateListView(generics.ListCreateAPIView):
     Handles creating and listing genres.
     """
     
-    permission_classes = (IsAuthenticated, GenrePermissionClass,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
@@ -60,7 +60,7 @@ class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     Handles retrieving, updating, and deleting genres.
     """
     
-    permission_classes = (IsAuthenticated,GenrePermissionClass,)
+    permission_classes = (IsAuthenticated,GlobalDefaultPermission,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 

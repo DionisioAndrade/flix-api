@@ -1,4 +1,4 @@
-""" Permissions for the Genre API """
+""" Permissions for the Genre EndPoint """
 
 from rest_framework import permissions
 
