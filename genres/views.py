@@ -1,9 +1,9 @@
 """Views for the Actor app."""
 
-#import json
-#from django.http import JsonResponse
-#rom django.views.decorators.csrf import csrf_exempt
-#from django.shortcuts import get_object_or_404
+# import json
+# from django.http import JsonResponse
+# rom django.views.decorators.csrf import csrf_exempt
+# from django.shortcuts import get_object_or_404
 from genres.models import Genre
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -44,28 +44,20 @@ from app.permissions import GlobalDefaultPermission
 #         genre.delete()
 #         return JsonResponse({'message': 'Genre deleted successfully'}, status=204)
 
+
 class GenreCreateListView(generics.ListCreateAPIView):
     """
     Handles creating and listing genres.
     """
-    
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-
 
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     """
     Handles retrieving, updating, and deleting genres.
     """
-    
-    permission_classes = (IsAuthenticated,GlobalDefaultPermission,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-
-
-
-
-
-

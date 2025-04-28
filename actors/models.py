@@ -1,5 +1,6 @@
 from django.db import models
 
+
 COUNTRIES = [
     ('BR', 'Brasil'),
     ('US', 'Estados Unidos'),
@@ -18,6 +19,7 @@ COUNTRIES = [
     ('AR', 'Argentina'),
     ('CA', 'Canadá'),
 ]
+
 
 class Actor(models.Model):
     name = models.CharField(max_length=200)

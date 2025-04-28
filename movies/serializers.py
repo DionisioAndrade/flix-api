@@ -7,6 +7,7 @@ from genres.models import Genre
 from actors.models import Actor
 import datetime
 
+
 class MovieSerializer(serializers.Serializer):
     """Serializer for the Movie . Converts Movie instances into JSON format."""
     id = serializers.IntegerField(
@@ -22,16 +23,17 @@ class MovieSerializer(serializers.Serializer):
         many=True,
     )
     resume = serializers.CharField()
-    
+
+
 class MovieModelSerializer(serializers.ModelSerializer):
     """Serializer for the Movie model. Converts Movie instances into JSON format."""
-    
+
     rate = serializers.SerializerMethodField(read_only=True)
-    
+
     class Meta:
         model = Movie
-        fields= '__all__'
-        
+        fields = '__all__'
+
     def get_rate(self, obj):
         """Calculates the average rate of the movie."""
         rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
@@ -45,10 +47,9 @@ class MovieModelSerializer(serializers.ModelSerializer):
         if value.year > datetime.datetime.now().year:
             raise serializers.ValidationError("The release date cannot be in the future.")
         return value
-    
+
     def validate_resume(self, value):
         """Validates the resume of the movie."""
         if len(value) > 500:
             raise serializers.ValidationError("The resume cannot be longer than 500 characters.")
         return value
-    

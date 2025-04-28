@@ -2,6 +2,7 @@
 
 from rest_framework import permissions
 
+
 class GlobalDefaultPermission(permissions.BasePermission):
     """
     Custom permission class to allow only authenticated users to access the API.
@@ -14,12 +15,12 @@ class GlobalDefaultPermission(permissions.BasePermission):
             method=request.method,
             view=view,
         )
-        
+
         if not model_permission_codename:
             return False
-        
+
         return request.user.has_perm(model_permission_codename)
-    
+
     def __get_model_permission_codename(self, method, view):
         """
         Get the model permission codename based on the request method and view.
@@ -31,7 +32,7 @@ class GlobalDefaultPermission(permissions.BasePermission):
             return f'{app_label}.{action}_{model_name}'
         except AttributeError:
             return None
-        
+
     def __get_action_sufix(self, method):
         """
         Get the action suffix based on the request method.
@@ -45,5 +46,5 @@ class GlobalDefaultPermission(permissions.BasePermission):
             'OPTIONS': 'view',
             'HEAD': 'view',
         }
-        
+
         return method_actions.get(method, '')

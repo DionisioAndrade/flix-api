@@ -8,12 +8,12 @@ class Movie(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name='movies')
     release_date = models.DateField(blank=True, null=True)
     actors = models.ManyToManyField(Actor, related_name='movies')
-    resume = models.TextField(blank=True, null=True)    
-    
+    resume = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name = 'Movie'
         verbose_name_plural = 'Movies'
-        ordering = ['title']   
-    
+        ordering = ['title']
