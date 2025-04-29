@@ -42,10 +42,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-## Importando arquivo atores csv
-
-caso já tenha uma base de atores e não queira cadastrar ator por ator tente
-
+## Importe atores via CSV (opcional)
 ```bash
 python manage.py import_actors {nome_do_arquivo.csv}
 ```
