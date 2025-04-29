@@ -36,8 +36,7 @@ git clone https://github.com/DionisioAndrade/api-flix.git
 pip install -r requirements.txt
 ```
 
-### 3. Rodando a API
-| ATENÇÃO, NUNCA UTILIZAR RUNSERVER EM PRODUÇÃO
+### 3. Rodando a API (Não utilizar em produção)
 ```bash
 python manage.py runserver
 ```
