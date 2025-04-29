@@ -1,11 +1,13 @@
 """Module for genre serializers in the API-Flix."""
 
+import datetime
 from django.db.models import Avg
 from rest_framework import serializers
 from movies.models import Movie
 from genres.models import Genre
 from actors.models import Actor
-import datetime
+from genres.serializers import GenreSerializer
+from actors.serializers import ActorSerializer
 
 
 class MovieSerializer(serializers.Serializer):
@@ -25,14 +27,15 @@ class MovieSerializer(serializers.Serializer):
     resume = serializers.CharField()
 
 
-class MovieModelSerializer(serializers.ModelSerializer):
-    """Serializer for the Movie model. Converts Movie instances into JSON format."""
-
+class MovieListDetailSerializer(serializers.ModelSerializer):
+    """Serializer for the Movie model. Converts Movie instances into JSON format. just method GET"""
+    genre = GenreSerializer()
+    actors = ActorSerializer(many=True)
     rate = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Movie
-        fields = '__all__'
+        fields = ['id', 'title', 'genre', 'actors', 'release_date', 'rate', 'resume']
 
     def get_rate(self, obj):
         """Calculates the average rate of the movie."""
@@ -41,6 +44,13 @@ class MovieModelSerializer(serializers.ModelSerializer):
         if rate:
             return round(rate, 1)
         return None
+
+
+class MovieModelSerializer(serializers.ModelSerializer):
+    """Serializer for the Movie model. Converts Movie instances into JSON format. just method POST"""
+    class Meta:
+        model = Movie
+        fields = '__all__'
 
     def validate_release_date(self, value):
         """Validates the release date of the movie."""
