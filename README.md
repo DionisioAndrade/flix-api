@@ -1,12 +1,13 @@
 # API-Flix
 
-A **API-Flix** é uma API RESTful desenvolvida para gerenciar um catálogo de filmes. Ela permite o cadastro, atualização, leitura e exclusão de filmes, gêneros, autores e outras informações associadas a filmes. A API foi projetada para ser fácil de usar e fornecer funcionalidades essenciais para manipulação e exibição de dados relacionados a filmes.
+A **API-Flix** é uma API RESTful desenvolvida para gerenciar um catálogo de filmes. Ela permite o cadastro, atualização, leitura e exclusão de filmes, gêneros, atores e outras informações associadas a filmes. A API foi projetada para ser fácil de usar e fornecer funcionalidades essenciais para manipulação e exibição de dados relacionados a filmes.
 
 ## Funcionalidades
 
 - Cadastro de filmes
 - Cadastro de gêneros de filmes
 - Cadastro de atores
+- Importar atores de arquivos CSV
 - Manipulação de dados de filmes (criação, leitura, atualização, exclusão)
 - Relacionamento entre filmes, gêneros e atores
 -Avaliação de Filmes
@@ -15,8 +16,8 @@ A **API-Flix** é uma API RESTful desenvolvida para gerenciar um catálogo de fi
 ## Tecnologias Utilizadas
 
 - Python
-- Django (framework web)
-- Django REST Framework (para criação da API)
+- Django
+- Django REST Framework
 - Banco de Dados: SQLite (pode ser alterado conforme necessário)
 
 ## Como Começar
@@ -33,6 +34,20 @@ git clone https://github.com/DionisioAndrade/api-flix.git
 
 ```bash
 pip install -r requirements.txt
+```
+
+### 3. Rodando a API
+| ATENÇÃO, NUNCA UTILIZAR RUNSERVER EM PRODUÇÃO
+```bash
+python manage.py runserver
+```
+
+## Importando arquivo atores csv
+
+caso já tenha uma base de atores e não queira cadastrar ator por ator tente
+
+```bash
+python manage.py import_actors {nome_do_arquivo.csv}
 ```
 
 ## Links úteis
